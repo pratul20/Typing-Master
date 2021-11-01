@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 #include <conio.h>
 #include <windows.h>
+#include "C:\Users\rckle\Desktop\Assignment\SEM 3\OOPL Lab\Minor Project\input.cpp"
 #include <chrono>
 
 using namespace std;
@@ -107,6 +108,12 @@ public:
 
     void easy()
     {
+        UserInput obj("A quick brown fox jumps over the lazy dog");
+        auto start = high_resolution_clock::now();
+        obj.type();
+        auto stop = high_resolution_clock::now();
+        auto duration = duration_cast<milliseconds>(stop - start);
+        cout<<"\nTime Taken: "<<(double)duration.count()/1000<<" seconds";
     }
 
     void medium()
