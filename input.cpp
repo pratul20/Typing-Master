@@ -12,14 +12,15 @@ private:
 
 public:
 
-    UserInput(string s) {
-        this->s = s;
+    UserInput(string str) {
+        this->s = str;
+        position = 0;
+        errors = 0;
     }
 
     void type()
     {
-        cout << s << endl
-             << endl;
+        cout << s << endl << endl;
 
         while (position != s.length())
         {
