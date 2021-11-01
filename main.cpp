@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include "C:\Users\rckle\Desktop\Assignment\SEM 3\OOPL Lab\Minor Project\menu.cpp"
 #include <conio.h>
 #include <chrono>
 
@@ -40,5 +41,7 @@ public:
 
 int main()
 {
+    Menu obj;
+    obj.start();
     return 0;
 }

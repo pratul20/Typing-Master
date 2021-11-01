@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include "C:\Users\rckle\Desktop\Assignment\SEM 3\OOPL Lab\Minor Project\levels.cpp"
 #include <windows.h>
 using namespace std;
 
@@ -20,7 +21,7 @@ public:
         cout << "             __/ | | |                   __/ |                                             " << endl;
         cout << "            |___/  |_|                  |___/                                              " << endl;
         cout << "************************************************************************************************" << endl;
-        cout << "                                  Welcome to Typing Master                                     " << endl;
+        cout << "\n                                  Welcome to Typing Master                                     " << endl;
         cout << "\nSelect the Mode:-\n"
              << endl;
         cout << "1. Classic Mode" << endl;
@@ -51,10 +52,12 @@ public:
     void modes(int i)
     {
         if(i==1) {
-
+            ClassicMode obj;
+            obj.menu();
         }
         else if(i==2) {
-
+            TimeAttackMode obj;
+            obj.menu();
         }
     }
 };
