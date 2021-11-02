@@ -26,6 +26,11 @@ public:
         {
             current = getche();
 
+            if(current == '^') {
+                cout<<"\nTest Terminated";
+                break;
+            }
+
             if (current == 8)
             {
                 position--;

@@ -10,42 +10,34 @@ using namespace std::chrono;
 class Time
 {
 private:
-    int sec;
+    high_resolution_clock::time_point start;
+    high_resolution_clock::time_point stop;
     int target;
 
 public:
-    Time()
-    {
-        sec = 0;
-    }
+    Time() {}
 
     Time(int target)
     {
-        sec = 0;
         this->target = target;
     }
 
-    void tick()
-    {
-        if (sec < target)
-        {
-            sec++;
-        }
+    void startClock() {
+        start = high_resolution_clock::now();
     }
 
-    int getSeconds()
-    {
-        return sec;
+    void stopClock() {
+        stop = high_resolution_clock::now();
+    }
+
+    double getTime() {
+        duration<double> elapsedTime = duration_cast<duration<double>>(stop - start);
+        return elapsedTime.count();
     }
 
     int getTarget()
     {
         return target;
-    }
-
-    void setSeconds(int sec)
-    {
-        this->sec = sec;
     }
 
     void setTarget(int target)
@@ -57,12 +49,14 @@ public:
 
     void startsIn()
     {
+        cout<<"\nTo stop, enter ^\n";
         cout << "Starting in 3... ";
         Sleep(1000);
         cout<<"2... ";
         Sleep(1000);
-        cout<<"1... \n";
+        cout<<"1... ";
         Sleep(1000);
+        cout<<endl<<endl;
     }
 };
 
@@ -109,11 +103,11 @@ public:
     void easy()
     {
         UserInput obj("A quick brown fox jumps over the lazy dog");
-        auto start = high_resolution_clock::now();
+        startClock();
         obj.type();
-        auto stop = high_resolution_clock::now();
-        auto duration = duration_cast<milliseconds>(stop - start);
-        cout<<"\nTime Taken: "<<(double)duration.count()/1000<<" seconds";
+        stopClock();
+        double time = getTime();
+        cout<<"\nTime Taken: "<<time<<" seconds";
     }
 
     void medium()
