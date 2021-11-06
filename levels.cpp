@@ -3,6 +3,7 @@
 #include <windows.h>
 #include ".\input.cpp"
 #include <chrono>
+#include ".\paragraph.cpp"
 
 using namespace std;
 using namespace std::chrono;
@@ -102,7 +103,9 @@ public:
 
     void easy()
     {
-        UserInput obj("A quick brown fox jumps over the lazy dog");
+        Paragraph para("easy");
+        string to_type = para.get_paragraph();
+        UserInput obj(to_type);
         startClock();
         obj.type();
         stopClock();
@@ -112,10 +115,26 @@ public:
 
     void medium()
     {
+        Paragraph para("medium");
+        string to_type = para.get_paragraph();
+        UserInput obj(to_type);
+        startClock();
+        obj.type();
+        stopClock();
+        double time = getTime();
+        cout<<"\nTime Taken: "<<time<<" seconds";
     }
 
     void hard()
     {
+        Paragraph para("hard");
+        string to_type = para.get_paragraph();
+        UserInput obj(to_type);
+        startClock();
+        obj.type();
+        stopClock();
+        double time = getTime();
+        cout<<"\nTime Taken: "<<time<<" seconds";
     }
 };
 
