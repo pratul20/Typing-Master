@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 #include <conio.h>
 #include <windows.h>
-#include "C:\Users\rckle\Desktop\Assignment\SEM 3\OOPL Lab\Minor Project\input.cpp"
+#include ".\input.cpp"
 #include <chrono>
 
 using namespace std;
