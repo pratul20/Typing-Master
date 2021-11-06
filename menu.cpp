@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
-#include "C:\Users\rckle\Desktop\Assignment\SEM 3\OOPL Lab\Minor Project\levels.cpp"
 #include <windows.h>
+
+#include ".\levels.cpp"
+
 using namespace std;
 
 class Menu
