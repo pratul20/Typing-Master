@@ -44,15 +44,13 @@ class Users {
             }
         }
 
-        vector<string> getUsers() {
+        void getUsers() {
             string path = "Database/HighScores";
             vector<string> users;
         
             for (const auto & file : directory_iterator(path)){
                 users.push_back(file.path().filename().string());
             }
-
-            return users;
         }
 
         void printUsers() {
