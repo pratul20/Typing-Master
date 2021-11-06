@@ -24,15 +24,18 @@ public:
         this->target = target;
     }
 
-    void startClock() {
+    void startClock()
+    {
         start = high_resolution_clock::now();
     }
 
-    void stopClock() {
+    void stopClock()
+    {
         stop = high_resolution_clock::now();
     }
 
-    double getTime() {
+    double getTime()
+    {
         duration<double> elapsedTime = duration_cast<duration<double>>(stop - start);
         return elapsedTime.count();
     }
@@ -51,14 +54,14 @@ public:
 
     void startsIn()
     {
-        cout<<"\nTo stop, enter ^\n";
+        cout << "\nTo stop, press ^\n";
         cout << "Starting in 3... ";
         Sleep(1000);
-        cout<<"2... ";
+        cout << "2... ";
         Sleep(1000);
-        cout<<"1... ";
+        cout << "1... ";
         Sleep(1000);
-        cout<<endl<<endl;
+        cout << endl << endl;
     }
 };
 
@@ -111,7 +114,7 @@ public:
         obj.type();
         stopClock();
         double time = getTime();
-        cout<<"\nTime Taken: "<<time<<" seconds";
+        cout << "\nTime Taken: " << time << " seconds";
     }
 
     void medium()
@@ -146,7 +149,6 @@ private:
 
 public:
     TimeAttackMode() {}
-
 
     void forAbstract() {}
 
