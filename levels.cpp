@@ -1,8 +1,10 @@
 #include <bits/stdc++.h>
 #include <conio.h>
 #include <windows.h>
-#include "C:\Users\rckle\Desktop\Assignment\SEM 3\OOPL Lab\Minor Project\input.cpp"
 #include <chrono>
+
+#include ".\input.cpp"
+#include ".\paragraph.cpp"
 
 using namespace std;
 using namespace std::chrono;
@@ -102,7 +104,9 @@ public:
 
     void easy()
     {
-        UserInput obj("A quick brown fox jumps over the lazy dog");
+        Paragraph para("easy");
+        string to_type = para.get_paragraph();
+        UserInput obj(to_type);
         startClock();
         obj.type();
         stopClock();
@@ -112,10 +116,26 @@ public:
 
     void medium()
     {
+        Paragraph para("medium");
+        string to_type = para.get_paragraph();
+        UserInput obj(to_type);
+        startClock();
+        obj.type();
+        stopClock();
+        double time = getTime();
+        cout<<"\nTime Taken: "<<time<<" seconds";
     }
 
     void hard()
     {
+        Paragraph para("hard");
+        string to_type = para.get_paragraph();
+        UserInput obj(to_type);
+        startClock();
+        obj.type();
+        stopClock();
+        double time = getTime();
+        cout<<"\nTime Taken: "<<time<<" seconds";
     }
 };
 

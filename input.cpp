@@ -1,5 +1,6 @@
-#include <bits/stdc++.h>
-#include <conio.h>
+#include<bits/stdc++.h>
+#include<conio.h>
+
 using namespace std;
 
 class UserInput
