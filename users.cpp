@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 #include <filesystem>
 #include <fstream>
+#include <string>
 
 using namespace std;
 using std::filesystem::directory_iterator;
@@ -77,7 +78,29 @@ class Users {
 
             if (it != users.end())
             {
-                cout << "User: " << player <<" exists in DB " ;
+                string scores[6];
+                int i=0;
+
+                ifstream fin;
+                fin.open("Database/HighScores/"+ player + ".txt");
+                while (fin) {
+                    getline(fin, scores[i]);
+                    i++;
+                }
+    
+                fin.close();
+                cout<<"***************************************"<<endl;
+                cout<<'\t'<<player<<"'s Scoreboard :"<<endl;
+                cout<<"***************************************"<<endl;
+                cout<<"Classic Mode :"<<endl;
+                cout<<"Easy   :"<<scores[0]<<endl;
+                cout<<"Medium : "<<scores[1]<<endl;
+                cout<<"Hard   : "<<scores[2]<<endl<<endl;
+                cout<<"Time Attack Mode : "<<endl;
+                cout<<"30 seconds : "<<scores[3]<<endl;
+                cout<<"60 seconds : "<<scores[4]<<endl;
+                cout<<"90 seconds : "<<scores[5]<<endl;
+                cout<<"***************************************"<<endl;
             }
             else
                 cout << "\nUser is not registered yet\n";
