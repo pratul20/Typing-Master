@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 #include <filesystem>
+#include <fstream>
 
 using namespace std;
 using std::filesystem::directory_iterator;
@@ -49,7 +50,9 @@ class Users {
             vector<string> users;
         
             for (const auto & file : directory_iterator(path)){
-                users.push_back(file.path().filename().string());
+                string us = file.path().filename().string();
+                us.resize(us.size() - 4);
+                this->users.push_back(us);
             }
         }
 
@@ -59,7 +62,7 @@ class Users {
                 cout<<"\nNo users registered yet\n";
             else{
                 cout<<endl;
-                int i=0;
+                int i=1;
                 for (auto user : users) {
                     cout << i <<". "<<user <<endl;
                     i++;
@@ -68,6 +71,7 @@ class Users {
         }
 
         void getUserData(string player) {
+            getUsers();
             vector<string>::iterator it;
             it = find (users.begin(), users.end(), player);
 
