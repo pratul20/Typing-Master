@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
-#include <windows.h>
-
 #include ".\levels.cpp"
+#include ".\users.cpp"
+#include <windows.h>
 
 using namespace std;
 
@@ -27,7 +27,8 @@ public:
         cout << "\nSelect the Mode:-\n" << endl;
         cout << "1. Classic Mode" << endl;
         cout << "2. Time Attack Mode" << endl;
-        cout << "3. Exit" << endl;
+        cout << "3. User Reports" << endl;
+        cout << "4. Exit" << endl;
         cout << "Enter Your Choice: ";
         cin >> choice;
         switch (choice)
@@ -39,6 +40,11 @@ public:
             modes(choice);
             break;
         case 3:
+            modes(choice);
+            // ClassicMode pip;
+            // pip.searchUserFile();
+            break;
+        case 4:
             cout << endl << endl;
             cout << " _____  _                    _     __   __              " << endl;
             cout << "|_   _|| |                  | |    \\ \\ / /              " << endl;
@@ -58,6 +64,10 @@ public:
         }
         else if(i==2) {
             TimeAttackMode obj;
+            obj.menu();
+        }
+        else if(i==3) {
+            Users obj;
             obj.menu();
         }
     }
