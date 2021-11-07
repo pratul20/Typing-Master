@@ -1,8 +1,7 @@
 #include <bits/stdc++.h>
+#include ".\menu.cpp"
 #include <conio.h>
 #include <chrono>
-
-#include ".\menu.cpp"
 
 using namespace std;
 using namespace std::chrono;

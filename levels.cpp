@@ -1,9 +1,8 @@
 #include <bits/stdc++.h>
 #include <conio.h>
 #include <windows.h>
-#include <chrono>
-
 #include ".\input.cpp"
+#include <chrono>
 #include ".\paragraph.cpp"
 
 using namespace std;
