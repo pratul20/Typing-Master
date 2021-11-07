@@ -60,7 +60,7 @@ public:
         Sleep(1000);
         cout << "1... ";
         Sleep(1000);
-        cout << endl << endl;
+        cout << endl;
     }
 };
 
@@ -68,9 +68,20 @@ class ClassicMode : public Time
 {
 private:
     int level;
+    int words;
+    int errors;
+    int total;
+    int fixed;
+    double avgAccuracy;
 
 public:
-    ClassicMode() {}
+    ClassicMode() {
+        errors = 0;
+        words = 0;
+        total = 0;
+        fixed = 0;
+        avgAccuracy = 0.00;
+    }
 
     void forAbstract() {}
 
@@ -106,38 +117,84 @@ public:
 
     void easy()
     {
+        int n = 0; 
         Paragraph para("easy");
-        string to_type = para.get_paragraph();
-        UserInput obj(to_type);
+        vector<string> lines = para.getParagraph();
         startClock();
-        obj.type();
+        for(auto line: lines) {
+            UserInput obj(line);
+            obj.type();
+            if(obj.isTerminated()) {
+                break;
+            }
+            n++;
+            updateDetails(obj);
+            cout<<endl;
+        } 
         stopClock();
+        printDetails(n);
         double time = getTime();
-        cout << "\nTime Taken: " << time << " seconds";
+        cout << "Time Taken: " << time << " seconds"<<endl;
     }
 
     void medium()
     {
+        int n = 0; 
         Paragraph para("medium");
-        string to_type = para.get_paragraph();
-        UserInput obj(to_type);
+        vector<string> lines = para.getParagraph();
         startClock();
-        obj.type();
+        for(auto line: lines) {
+            UserInput obj(line);
+            obj.type();
+            if(obj.isTerminated()) {
+                break;
+            }
+            n++;
+            updateDetails(obj);
+            cout<<endl;
+        } 
         stopClock();
+        printDetails(n);
         double time = getTime();
-        cout<<"\nTime Taken: "<<time<<" seconds";
+        cout << "Time Taken: " << time << " seconds"<<endl;
     }
 
     void hard()
     {
+        int n = 0; 
         Paragraph para("hard");
-        string to_type = para.get_paragraph();
-        UserInput obj(to_type);
+        vector<string> lines = para.getParagraph();
         startClock();
-        obj.type();
+        for(auto line: lines) {
+            UserInput obj(line);
+            obj.type();
+            if(obj.isTerminated()) {
+                break;
+            }
+            n++;
+            updateDetails(obj);
+            cout<<endl;
+        } 
         stopClock();
+        printDetails(n);
         double time = getTime();
-        cout<<"\nTime Taken: "<<time<<" seconds";
+        cout << "Time Taken: " << time << " seconds"<<endl;
+    }
+
+    void updateDetails(UserInput &obj) {
+        errors += obj.getErrors();
+        fixed += obj.getFixedErrors();
+        total += obj.getTotal();
+        avgAccuracy += obj.getAccuracy();
+        words += obj.getWordCount();
+    }
+
+    void printDetails(int n) {
+        cout << "\n\nErrors: "<< errors;
+        cout << "\nFixed: " << fixed;
+        cout << "\nTotal Entries: " << total;
+        cout << "\nSpeed: " << (int) words*60/(int)getTime() << " wpm"; 
+        cout << "\nAccuracy: " << (double) avgAccuracy/n << " %"<<endl;
     }
 };
 
