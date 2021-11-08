@@ -22,6 +22,7 @@ class Users {
             cout << "\nSelect from the follwing choice:-" << endl;
             cout << "1. User Data" << endl;
             cout << "2. Users List" << endl;
+            cout << "3. Register User" << endl;
             cout << "Enter your choice: ";
             int choice;
             cin >> choice;
@@ -38,6 +39,9 @@ class Users {
                 }
                 case 2:
                     printUsers();
+                    break;
+                case 3:
+                    addUser();
                     break;
                 default:
                     cout << "Invalid Choice Entered\n\n";
@@ -104,5 +108,9 @@ class Users {
             }
             else
                 cout << "\nUser is not registered yet\n";
+        }
+
+        void addUser(){
+
         }
 }; 
