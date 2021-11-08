@@ -80,7 +80,7 @@ class Users {
             }
         }
 
-        void getUserData(string player) {
+        bool getUserData(string player) {
             this->scores.clear();
             getUsers();
             vector<string>::iterator it;
@@ -98,9 +98,10 @@ class Users {
                     this->scores.push_back(score);
                     i++;
                 }
-
                 fin.close();
+                return true;
             }
+            return false;
         }
         void printUserData(string player){
             getUserData(player);
@@ -126,6 +127,18 @@ class Users {
         }
 
         void addUser(string player){
-
+            if(getUserData(player)){
+                cout<<"\nUsername already exists, try a different username\n";
+            }
+            else{
+                ofstream out("Database/HighScores/" + player + ".txt");
+                int i=0;
+                while(i!=6){
+                    out<<0<<endl;
+                    i++;
+                }
+                cout<<player<<" has been registered succesfully";
+                out.close();
+            }
         }
 }; 
