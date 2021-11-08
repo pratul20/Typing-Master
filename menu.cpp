@@ -24,8 +24,7 @@ public:
         cout << "            |___/  |_|                  |___/                                              " << endl;
         cout << "************************************************************************************************" << endl;
         cout << "\n                                  Welcome to Typing Master                                     " << endl;
-        cout << "\nSelect the Mode:-\n"
-             << endl;
+        cout << "\nSelect the Mode:-\n" << endl;
         cout << "1. Classic Mode" << endl;
         cout << "2. Time Attack Mode" << endl;
         cout << "3. User Reports" << endl;

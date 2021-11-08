@@ -7,11 +7,15 @@ class UserInput
 {
 private:
     int errors;
+    int wpm;
+    int total;
+    int fixed;
     int position;
     string s;
     char *typed;
     char current;
     double accuracy;
+    int terminate;
 
 public:
     UserInput(string str)
@@ -21,12 +25,12 @@ public:
         accuracy = 0.00;
         position = 0;
         errors = 0;
+        terminate = 0;
     }
 
     void type()
     {
-        cout << s << endl
-             << endl;
+        cout << endl << s << endl << endl;
 
         while (position != s.length())
         {
@@ -35,6 +39,7 @@ public:
             if (current == '^')
             {
                 cout << "\nTest Terminated";
+                terminate = 1;
                 break;
             }
 
@@ -54,25 +59,76 @@ public:
             position++;
         }
 
-        cout << "\n\nErrors: " << errors;
+    }
 
-        accuracy = getAccuracy();
-        cout << "\nAccuracy: " << accuracy << "%";
+    int isTerminated() {
+        return terminate;
+    }
+
+    int getErrors() {
+        return errors;
+    }
+
+    int getTotal() {
+        return (position == s.length() ? s.length() : position);
     }
 
     double getAccuracy()
     {
-        int finalErrors = 0;
         double accu;
-        for (int i = 0; i < s.length(); i++)
+        if(position == s.length()) 
         {
-            if (s[i] != typed[i])
+            accu = (double) (s.length()-errors)*100/s.length();
+        }
+
+        else 
+        {
+            if(position!=0) {
+                accu = (double) (position-errors)*100/position;
+            }
+            else
             {
-                finalErrors++;
+                accu = 0;
+            }
+        }
+        return accu;
+    }
+
+    int getFixedErrors() {
+        int final_errors = 0 ;
+
+        if(position == s.length())
+        {
+            for(int i=0;i<s.length();i++) {
+                if(typed[i] != s[i]) {
+                    final_errors++;
+                }
             }
         }
 
-        accu = (double)(s.length() - finalErrors) * 100 / s.length();
-        return accu;
+        else 
+        {
+            for(int i=0;i<position;i++) {
+                if(typed[i] != s[i]) {
+                    final_errors++;
+                }
+            }
+        }
+        return errors-final_errors;
     }
+
+    int getWordCount() {
+        int count = 0;
+        for(int i=0; i<position;i++) {
+            if(typed[i] == ' ') {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    ~UserInput() {
+        delete(typed);
+    }
+
 };
