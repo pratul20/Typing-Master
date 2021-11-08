@@ -62,6 +62,7 @@ class Users {
             for (const auto & file : directory_iterator(path)){
                 string us = file.path().filename().string();
                 us.resize(us.size() - 4);
+                transform(us.begin(), us.end(), us.begin(), ::tolower);
                 this->users.push_back(us);
             }
         }
