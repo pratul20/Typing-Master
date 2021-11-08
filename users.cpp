@@ -10,6 +10,7 @@ class Users {
 
     private :
         vector<string> users;
+        vector<double> scores;
 
     public :
 
@@ -22,6 +23,7 @@ class Users {
             cout << "\nSelect from the follwing choice:-" << endl;
             cout << "1. User Data" << endl;
             cout << "2. Users List" << endl;
+            cout << "3. Register User" << endl;
             cout << "Enter your choice: ";
             int choice;
             cin >> choice;
@@ -33,12 +35,19 @@ class Users {
                     string player;
                     cout<<"Enter the player\'s name you want to search:- ";
                     cin>>player;
-                    getUserData(player);
+                    printUserData(player);
                     break;
                 }
                 case 2:
                     printUsers();
                     break;
+                case 3:{
+                    string player;
+                    cout<<"Enter your user name:- ";
+                    cin>>player;
+                    addUser(player);
+                    break;
+                }
                 default:
                     cout << "Invalid Choice Entered\n\n";
                     menu();
@@ -47,12 +56,13 @@ class Users {
         }
 
         void getUsers() {
+            this->users.clear();
             string path = "Database/HighScores";
-            vector<string> users;
         
             for (const auto & file : directory_iterator(path)){
                 string us = file.path().filename().string();
                 us.resize(us.size() - 4);
+                transform(us.begin(), us.end(), us.begin(), ::tolower);
                 this->users.push_back(us);
             }
         }
@@ -71,38 +81,65 @@ class Users {
             }
         }
 
-        void getUserData(string player) {
+        bool getUserData(string player) {
+            this->scores.clear();
             getUsers();
             vector<string>::iterator it;
             it = find (users.begin(), users.end(), player);
 
             if (it != users.end())
             {
-                string scores[6];
-                int i=0;
-
                 ifstream fin;
                 fin.open("Database/HighScores/"+ player + ".txt");
-                while (fin) {
-                    getline(fin, scores[i]);
+                double score;
+                int i=0;
+
+                while (i!=6) {
+                    fin>>score;
+                    this->scores.push_back(score);
                     i++;
                 }
-    
                 fin.close();
-                cout<<"***************************************"<<endl;
-                cout<<'\t'<<player<<"'s Scoreboard :"<<endl;
-                cout<<"***************************************"<<endl;
-                cout<<"Classic Mode :"<<endl;
-                cout<<"Easy   :"<<scores[0]<<endl;
-                cout<<"Medium : "<<scores[1]<<endl;
-                cout<<"Hard   : "<<scores[2]<<endl<<endl;
-                cout<<"Time Attack Mode : "<<endl;
-                cout<<"30 seconds : "<<scores[3]<<endl;
-                cout<<"60 seconds : "<<scores[4]<<endl;
-                cout<<"90 seconds : "<<scores[5]<<endl;
-                cout<<"***************************************"<<endl;
+                return true;
             }
-            else
+            return false;
+        }
+        void printUserData(string player){
+            getUserData(player);
+            // double accuracy;
+            if(scores.size() == 0){
                 cout << "\nUser is not registered yet\n";
+            }
+            else{
+                    cout<<"***************************************"<<endl;
+                    cout<<'\t'<<player<<"'s Scoreboard :"<<endl;
+                    cout<<"***************************************"<<endl;
+                    cout<<"Classic Mode :"<<endl;
+                    cout<<"Easy   :"<<scores[0]<<endl;
+                    cout<<"Medium : "<<scores[1]<<endl;
+                    cout<<"Hard   : "<<scores[2]<<endl<<endl;
+                    cout<<"Time Attack Mode : "<<endl;
+                    cout<<"30 seconds : "<<scores[3]<<endl;
+                    cout<<"60 seconds : "<<scores[4]<<endl;
+                    cout<<"90 seconds : "<<scores[5]<<endl;
+                    cout<<"Accuracy : "<<endl;
+                    cout<<"***************************************"<<endl; 
+            }
+        }
+
+        void addUser(string player){
+            if(getUserData(player)){
+                cout<<"\nUsername already exists, try a different username\n";
+            }
+            else{
+                ofstream out("Database/HighScores/" + player + ".txt");
+                int i=0;
+                while(i!=6){
+                    out<<0<<endl;
+                    i++;
+                }
+                cout<<player<<" has been registered succesfully";
+                out.close();
+            }
         }
 }; 

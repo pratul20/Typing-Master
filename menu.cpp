@@ -41,8 +41,6 @@ public:
             break;
         case 3:
             modes(choice);
-            // ClassicMode pip;
-            // pip.searchUserFile();
             break;
         case 4:
             cout << endl << endl;
