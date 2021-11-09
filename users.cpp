@@ -120,7 +120,7 @@ class Users {
             }
             return false;
         }
-
+        
         void printUserData(string player){
             getUserData(player);
             if(scores.size() == 0){

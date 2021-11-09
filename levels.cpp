@@ -258,11 +258,16 @@ public:
             n++;
             obj.type();
             if(obj.isTerminated()) {
-                cout<<"\nTest Terminated";
+                cout<<"\n\n***************";
+                cout<<"Test Terminated";
+                cout<<"***************";
                 break;
             }
+            
             if(obj.isTimeFinished()) {
-                cout<<"\nTime Finished";
+                cout<<"\n\n***************";
+                cout<<"Time Finished";
+                cout<<"***************";
                 break;
             }
             myReport.updateDetails(obj);
