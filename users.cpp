@@ -6,6 +6,8 @@
 using namespace std;
 using std::filesystem::directory_iterator;
 
+void pressEnter();
+
 class Users {
 
     private :
@@ -24,8 +26,6 @@ class Users {
             cout << "1. User Data" << endl;
             cout << "2. Users List" << endl;
             cout << "3. Register User" << endl;
-            cout << "4. Update User Accuracy" << endl;
-            cout << "5. Update User Score" << endl;
             cout << "Enter your choice: ";
             int choice;
             cin >> choice;
@@ -50,22 +50,8 @@ class Users {
                     addUser(player);
                     break;
                 }
-                // case 4:{
-                //     string player;
-                //     cout<<"Enter the user name, you want to update:- ";
-                //     cin>>player;
-                //     updateUserInfo(player, 100, 100);
-                //     break;
-                // }
-                // case 5:{
-                //     string player;
-                //     cout<<"Enter the user name, you want to update:- ";
-                //     cin>>player;
-                //     updateScores(player, 100, 2);
-                //     break;
-                // }
                 default:
-                    cout << "Invalid Choice Entered\n\n";
+                    cout << "Invalid Choice Entered\n";
                     menu();
                     break;
             }
@@ -95,6 +81,7 @@ class Users {
                     i++;
                 }
             }
+            pressEnter();
         }
 
         bool getUserData(string player) {
@@ -138,12 +125,12 @@ class Users {
                     cout<<"30 seconds : "<<scores[3]<<endl;
                     cout<<"60 seconds : "<<scores[4]<<endl;
                     cout<<"90 seconds : "<<scores[5]<<endl;
-                    cout<<"Average Accuracy : "<<scores[6]<<endl;
+                    cout<<"\nAverage Accuracy : "<<scores[6]<<endl;
                     cout<<"Words per Minute (wpm) : "<<scores[7]<<endl;
                     cout<<"Tests taken : "<<scores[8]<<endl;
                     cout<<"***************************************"<<endl; 
             }
-        
+            pressEnter();
         
         }
 
@@ -164,6 +151,7 @@ class Users {
                     out.close();
                 }
             }
+            pressEnter();
         }
 
         void addUser(string player){
@@ -180,6 +168,8 @@ class Users {
                 cout<<player<<" has been registered succesfully";
                 out.close();
             }
+
+            pressEnter();
         }
 
         void updateUserInfo(string player, double inGameAcc, int wpm){
@@ -202,10 +192,6 @@ class Users {
                 double newAcc = (double)((scores[6]*(scores[8]) + inGameAcc) / (scores[8]+1));
                 int newWpm = ((scores[7]*(scores[8]) + wpm) / (scores[8]+1));
                 scores[8]++;
-
-                // cout<<newAcc<<endl;
-                // cout<<newWpm<<endl;
-                // cout<<scores[8]<<endl;
 
                 fileData[6] = newAcc;
                 fileData[7] = newWpm;
@@ -242,7 +228,9 @@ class Users {
                 file.close();
 
                 file.open("Database/HighScores/" + player + ".txt") ;
-                fileData[code - 1] = inGameScore;
+                if(fileData[code-1] < inGameScore) {
+                    fileData[code - 1] = inGameScore;
+                }
                 currentLine = 0;
                 while ( currentLine < 9 )
                 {
@@ -252,4 +240,11 @@ class Users {
                 file.close();
             }
         }
+
+        friend void pressEnter();
 }; 
+
+void pressEnter() {
+    cout<<"\nPress Enter to continue.";
+    while(getch()!=13);
+}

@@ -118,6 +118,7 @@ public:
         cout << "1. Easy" << endl;
         cout << "2. Medium" << endl;
         cout << "3. Hard" << endl;
+        cout << "4. Back To Main Menu" << endl;
         cout << "Enter your choice: ";
         cin >> level;
 
@@ -134,6 +135,8 @@ public:
         case 3:
             Time::startsIn();
             hard();
+            break;
+        case 4:
             break;
         default:
             cout << "Invalid Choice Entered\n\n";
@@ -162,8 +165,9 @@ public:
         Time::stopClock();
         double time = Time::getTime();
         myReport.setTime(time);
-        myReport.printDetails(n, userObj, playerName, 0);
+        myReport.printDetails(n, userObj, playerName, 1);
         cout << "Time Taken: " << time << " seconds"<<endl;
+        pressEnter();
     }
 
     void medium()
@@ -186,8 +190,9 @@ public:
         Time::stopClock();
         double time = Time::getTime();
         myReport.setTime(time);
-        myReport.printDetails(n, userObj, playerName, 1);
+        myReport.printDetails(n, userObj, playerName, 2);
         cout << "Time Taken: " << time << " seconds"<<endl;
+        pressEnter();
     }
 
     void hard()
@@ -210,9 +215,12 @@ public:
         Time::stopClock();
         double time = Time::getTime();
         myReport.setTime(time);
-        myReport.printDetails(n, userObj, playerName, 2);
+        myReport.printDetails(n, userObj, playerName, 3);
         cout << "Time Taken: " << time << " seconds"<<endl;
+        pressEnter();
     }
+
+    friend void pressEnter();
 
 };
 
@@ -234,6 +242,7 @@ public:
         cout << "1. 30 seconds" << endl;
         cout << "2. 60 seconds" << endl;
         cout << "3. 90 seconds" << endl;
+        cout << "4. Back To Main Menu" << endl;
         cout << "Enter your choice: ";
         cin >> level;
 
@@ -250,6 +259,8 @@ public:
         case 3:
             Time::startsIn();
             sec_90();
+            break;
+        case 4:
             break;
         default:
             cout << "Invalid Choice Entered\n\n";
@@ -284,12 +295,14 @@ public:
                 break;
             }
             myReport.updateDetails(obj);
+            cout<<" ("<<Time::getTarget()-Time::getTime()<<" seconds remaining)";
             cout<<endl;
         } 
         double time = Time::getTime();
         myReport.setTime(time);
-        myReport.printDetails(n, userObj, playerName, 3);
+        myReport.printDetails(n, userObj, playerName, 4);
         cout << "Time Taken: " << time << " seconds"<<endl;
+        pressEnter();
     }
 
     void sec_60()
@@ -299,4 +312,9 @@ public:
     void sec_90()
     {
     }
+
+    friend void pressEnter();
 };
+
+
+

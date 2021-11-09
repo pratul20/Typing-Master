@@ -12,7 +12,7 @@ private:
     Users userObj;
 
 public:
-    void start()
+    void logo()
     {
         cout << "************************************************************************************************" << endl;
         cout << "  _______                   _                     __  __                 _                 " << endl;
@@ -25,6 +25,10 @@ public:
         cout << "            |___/  |_|                  |___/                                              " << endl;
         cout << "************************************************************************************************" << endl;
         cout << "\n                                  Welcome to Typing Master                                     " << endl;
+    }
+
+    void start() 
+    {
         cout << "Enter Your Name: ";
         cin >> playerName;
         userObj.addUserStarting(playerName);
