@@ -10,5 +10,8 @@ int main()
 {
     Menu obj;
     obj.start();
+    while(1) {
+        obj.menu();
+    }
     return 0;
 }

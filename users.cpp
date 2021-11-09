@@ -138,10 +138,31 @@ class Users {
                     cout<<"30 seconds : "<<scores[3]<<endl;
                     cout<<"60 seconds : "<<scores[4]<<endl;
                     cout<<"90 seconds : "<<scores[5]<<endl;
-                    cout<<"Accuracy : "<<scores[6]<<endl;
-                    cout<<"Words per minute (wpm) : "<<scores[7]<<endl;
+                    cout<<"Average Accuracy : "<<scores[6]<<endl;
+                    cout<<"Words per Minute (wpm) : "<<scores[7]<<endl;
                     cout<<"Tests taken : "<<scores[8]<<endl;
                     cout<<"***************************************"<<endl; 
+            }
+        
+        
+        }
+
+        void addUserStarting(string player){
+            if(getUserData(player)) {}
+            else{
+                char c;
+                cout << "This user doesn't exist. Do you want to create a new one (y/n)";
+                c = getche();
+                if(c == 'y' || c == 'Y') {
+                    ofstream out("Database/HighScores/" + player + ".txt");
+                    int i=0;
+                    while(i!=9){
+                        out<<0<<endl;
+                        i++;
+                    }
+                    cout<<player<<" has been registered succesfully";
+                    out.close();
+                }
             }
         }
 
@@ -182,9 +203,9 @@ class Users {
                 int newWpm = ((scores[7]*(scores[8]) + wpm) / (scores[8]+1));
                 scores[8]++;
 
-                cout<<newAcc<<endl;
-                cout<<newWpm<<endl;
-                cout<<scores[8]<<endl;
+                // cout<<newAcc<<endl;
+                // cout<<newWpm<<endl;
+                // cout<<scores[8]<<endl;
 
                 fileData[6] = newAcc;
                 fileData[7] = newWpm;

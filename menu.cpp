@@ -1,6 +1,5 @@
 #include <bits/stdc++.h>
 #include ".\levels.cpp"
-#include ".\users.cpp"
 #include <windows.h>
 
 using namespace std;
@@ -9,6 +8,8 @@ class Menu
 {
 private:
     int choice;
+    string playerName;
+    Users userObj;
 
 public:
     void start()
@@ -24,6 +25,14 @@ public:
         cout << "            |___/  |_|                  |___/                                              " << endl;
         cout << "************************************************************************************************" << endl;
         cout << "\n                                  Welcome to Typing Master                                     " << endl;
+        cout << "Enter Your Name: ";
+        cin >> playerName;
+        userObj.addUserStarting(playerName);
+    }
+
+    void menu() 
+    {
+        cout <<"\nWelcome "<<playerName<<"!\n";
         cout << "\nSelect the Mode:-\n" << endl;
         cout << "1. Classic Mode" << endl;
         cout << "2. Time Attack Mode" << endl;
@@ -54,14 +63,16 @@ public:
         }
     }
 
+    
+
     void modes(int i)
     {
         if(i==1) {
-            ClassicMode obj;
+            ClassicMode obj(playerName);
             obj.menu();
         }
         else if(i==2) {
-            TimeAttackMode obj;
+            TimeAttackMode obj(playerName);
             obj.menu();
         }
         else if(i==3) {

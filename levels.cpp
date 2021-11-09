@@ -2,6 +2,7 @@
 #include <conio.h>
 #include <windows.h>
 #include ".\input.cpp"
+#include ".\users.cpp"
 #include <chrono>
 #include ".\paragraph.cpp"
 
@@ -85,13 +86,17 @@ class Report {
             words += obj.getWordCount();
         }
 
-        void printDetails(int n) 
+        void printDetails(int n, Users &userObj, string &playerName, int mode) 
         {
+            double accuracy = (double) avgAccuracy/n;
+            int wpm = (int) words*60/(int)getTime();
             cout << "\n\nErrors: "<< errors;
             cout << "\nFixed: " << fixed;
             cout << "\nTotal Entries: " << total;
-            cout << "\nSpeed: " << (int) words*60/(int)getTime() << " wpm"; 
-            cout << "\nAccuracy: " << (double) avgAccuracy/n << " %"<<endl;
+            cout << "\nSpeed: " << wpm << " wpm"; 
+            cout << "\nAccuracy: " << accuracy << " %"<<endl;
+            userObj.updateUserInfo(playerName, accuracy, wpm);
+            userObj.updateScores(playerName, wpm, mode);
         }
 };
 
@@ -99,9 +104,13 @@ class ClassicMode: public Time
 {
 private:
     int level;
+    string playerName;
+    Users userObj;
 
 public:
-    ClassicMode() {}
+    ClassicMode(string playerName) {
+        this->playerName = playerName;
+    }
 
     void menu()
     {
@@ -153,7 +162,7 @@ public:
         Time::stopClock();
         double time = Time::getTime();
         myReport.setTime(time);
-        myReport.printDetails(n);
+        myReport.printDetails(n, userObj, playerName, 0);
         cout << "Time Taken: " << time << " seconds"<<endl;
     }
 
@@ -177,7 +186,7 @@ public:
         Time::stopClock();
         double time = Time::getTime();
         myReport.setTime(time);
-        myReport.printDetails(n);
+        myReport.printDetails(n, userObj, playerName, 1);
         cout << "Time Taken: " << time << " seconds"<<endl;
     }
 
@@ -201,7 +210,7 @@ public:
         Time::stopClock();
         double time = Time::getTime();
         myReport.setTime(time);
-        myReport.printDetails(n);
+        myReport.printDetails(n, userObj, playerName, 2);
         cout << "Time Taken: " << time << " seconds"<<endl;
     }
 
@@ -211,9 +220,13 @@ class TimeAttackMode: public Time
 {
 private:
     int level;
+    string playerName;
+    Users userObj;
 
 public:
-    TimeAttackMode() {}
+    TimeAttackMode(string playerName) {
+        this->playerName = playerName;
+    }
     
     void menu()
     {
@@ -275,7 +288,7 @@ public:
         } 
         double time = Time::getTime();
         myReport.setTime(time);
-        myReport.printDetails(n);
+        myReport.printDetails(n, userObj, playerName, 3);
         cout << "Time Taken: " << time << " seconds"<<endl;
     }
 
