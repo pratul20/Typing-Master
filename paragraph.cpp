@@ -24,9 +24,13 @@ public:
         {
             filename = "./Database/WordLists/medium.txt";
         }
-        else
+        else if (this->difficulty == "hard")
         {
             filename = "./Database/WordLists/hard.txt";
+        }
+        else if (this->difficulty == "timeAttack")
+        {
+            filename = "./Database/WordLists/timeAttack.txt";
         }
 
         fstream file;
@@ -38,13 +42,7 @@ public:
             paragraphs.push_back(output);
         }
         file.close();
-        // int start = 0;
-        // int end = paragraphs.size();
         srand((int)time(NULL));
-        // random_device rd;
-        // mt19937 rng(rd());
-        // uniform_int_distribution<int> uni(start, end - 1);
-        // int select = uni(rng);
         int select = rand()%paragraphs.size();
         this->toType = paragraphs[select];
     }

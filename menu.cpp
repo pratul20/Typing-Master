@@ -29,9 +29,7 @@ public:
 
     void start() 
     {
-        cout << "Enter Your Name: ";
-        cin >> playerName;
-        userObj.addUserStarting(playerName);
+        playerName = userObj.addUserStarting();
     }
 
     void menu() 

@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include <cstdlib>
 #include <conio.h>
 #include <windows.h>
 #include ".\input.cpp"
@@ -9,13 +10,13 @@
 using namespace std;
 using namespace std::chrono;
 
-
+void typingMaster();
 class Report {
     private:
         int words;
         int errors;
         int total;
-        int fixed;
+        int fixedErr;
         double avgAccuracy;
         double time;
     
@@ -24,7 +25,7 @@ class Report {
             errors = 0;
             words = 0;
             total = 0;
-            fixed = 0;
+            fixedErr = 0;
             avgAccuracy = 0.00;
             time = 0.00;
         }
@@ -41,8 +42,8 @@ class Report {
             return total;
         }
 
-        int getFixed() {
-            return fixed;
+        int getFixedErr() {
+            return fixedErr;
         }
 
         double getAvgAccuracy() {
@@ -65,8 +66,8 @@ class Report {
             this -> total = total;
         }
 
-        void setFixed(int fixed) {
-            this -> fixed = fixed;
+        void setFixedErr(int fixedErr) {
+            this -> fixedErr = fixedErr;
         }
 
         void setAvgAccuracy(double avgAccuracy) {
@@ -80,7 +81,7 @@ class Report {
         void updateDetails(UserInput &obj) 
         {
             errors += obj.getErrors();
-            fixed += obj.getFixedErrors();
+            fixedErr += obj.getFixedErrors();
             total += obj.getTotal();
             avgAccuracy += obj.getAccuracy();
             words += obj.getWordCount();
@@ -90,11 +91,13 @@ class Report {
         {
             double accuracy = (double) avgAccuracy/n;
             int wpm = (int) words*60/(int)getTime();
-            cout << "\n\nErrors: "<< errors;
-            cout << "\nFixed: " << fixed;
-            cout << "\nTotal Entries: " << total;
-            cout << "\nSpeed: " << wpm << " wpm"; 
-            cout << "\nAccuracy: " << accuracy << " %"<<endl;
+            cout << endl << endl;
+            cout << "\t   Results" << endl;
+            cout << "******************************" << endl;
+            cout << setw(10) << "Errors"<< setw(4) << "|" << setw(6) << errors << endl;
+            cout << setw(10) << "Fixed"<< setw(4) << "|" << setw(6) << fixedErr << endl;
+            cout << setw(10) << "Speed"<< setw(4) << "|" << setw(6) << wpm << endl;
+            cout << setw(10) << "Accuracy"<< setw(4) << "|" << setw(6) << fixed << setprecision(2) << accuracy << " %" << endl;
             userObj.updateUserInfo(playerName, accuracy, wpm);
             userObj.updateScores(playerName, wpm, mode);
         }
@@ -125,15 +128,12 @@ public:
         switch (level)
         {
         case 1:
-            Time::startsIn();
             easy();
             break;
         case 2:
-            Time::startsIn();
             medium();
             break;
         case 3:
-            Time::startsIn();
             hard();
             break;
         case 4:
@@ -145,10 +145,14 @@ public:
         }
     }
 
-    void easy()
+    void takeTest(string difficulty, int mode) 
     {
+        system("cls");
+        typingMaster();
+        cout << "\n                                  Classic Mode (" << difficulty << ")" <<endl;
+        Time::startsIn();
         int n = 0; 
-        Paragraph para("easy");
+        Paragraph para(difficulty);
         vector<string> lines = para.getParagraph();
         Report myReport;
         Time::startClock();
@@ -156,68 +160,37 @@ public:
             UserInput obj(0, line);
             n++;
             obj.type();
+            myReport.updateDetails(obj);
             if(obj.isTerminated()) {
+                cout<<"\n\n***************";
+                cout<<"Test Terminated";
+                cout<<"***************";
                 break;
             }
-            myReport.updateDetails(obj);
-            cout<<endl;
+            cout << " (" << lines.size()-n << " lines Remaining)";
+            cout << endl;
         } 
         Time::stopClock();
         double time = Time::getTime();
         myReport.setTime(time);
-        myReport.printDetails(n, userObj, playerName, 1);
-        cout << "Time Taken: " << time << " seconds"<<endl;
+        myReport.printDetails(n, userObj, playerName, mode);
+        cout << setw(10) << "Time Taken"<< setw(4) << "|" << setw(6) << fixed << setprecision(2) << time << " seconds" << endl;
         pressEnter();
+    }
+
+    void easy()
+    {
+        takeTest("easy", 1);
     }
 
     void medium()
     {
-        int n = 0; 
-        Paragraph para("medium");
-        vector<string> lines = para.getParagraph();
-        Report myReport;
-        Time::startClock();
-        for(auto line: lines) {
-            UserInput obj(0, line);
-            n++;
-            obj.type();
-            if(obj.isTerminated()) {
-                break;
-            }
-            myReport.updateDetails(obj);
-            cout<<endl;
-        } 
-        Time::stopClock();
-        double time = Time::getTime();
-        myReport.setTime(time);
-        myReport.printDetails(n, userObj, playerName, 2);
-        cout << "Time Taken: " << time << " seconds"<<endl;
-        pressEnter();
+        takeTest("medium", 2);
     }
 
     void hard()
     {
-        int n = 0; 
-        Paragraph para("hard");
-        vector<string> lines = para.getParagraph();
-        Report myReport;
-        Time::startClock();
-        for(auto line: lines) {
-            UserInput obj(0, line);
-            n++;
-            obj.type();
-            if(obj.isTerminated()) {
-                break;
-            }
-            myReport.updateDetails(obj);
-            cout<<endl;
-        } 
-        Time::stopClock();
-        double time = Time::getTime();
-        myReport.setTime(time);
-        myReport.printDetails(n, userObj, playerName, 3);
-        cout << "Time Taken: " << time << " seconds"<<endl;
-        pressEnter();
+        takeTest("hard", 3);
     }
 
     friend void pressEnter();
@@ -249,15 +222,12 @@ public:
         switch (level)
         {
         case 1:
-            Time::startsIn();
             sec_30();
             break;
         case 2:
-            Time::startsIn();
             sec_60();
             break;
         case 3:
-            Time::startsIn();
             sec_90();
             break;
         case 4:
@@ -269,18 +239,23 @@ public:
         }
     }
 
-    void sec_30()
+    void takeTest(int target, int mode) 
     {
+        system("cls");
+        typingMaster();
+        cout << "\n                                  Time Attack Mode (" << target << " seconds)" <<endl;
+        Time::startsIn();
         int n = 0; 
-        Paragraph para("easy");
+        Paragraph para("timeAttack");
         vector<string> lines = para.getParagraph();
         Report myReport;
-        setTarget(30);
+        setTarget(target);
         Time::startClock();
         for(auto line: lines) {
             UserInput obj(1, line);
             n++;
             obj.type();
+            myReport.updateDetails(obj);
             if(obj.isTerminated()) {
                 cout<<"\n\n***************";
                 cout<<"Test Terminated";
@@ -294,27 +269,43 @@ public:
                 cout<<"***************";
                 break;
             }
-            myReport.updateDetails(obj);
             cout<<" ("<<Time::getTarget()-Time::getTime()<<" seconds remaining)";
             cout<<endl;
         } 
         double time = Time::getTime();
         myReport.setTime(time);
-        myReport.printDetails(n, userObj, playerName, 4);
-        cout << "Time Taken: " << time << " seconds"<<endl;
+        myReport.printDetails(n, userObj, playerName, mode);
+        cout << setw(10) << "Time Taken"<< setw(4) << "|" << setw(6) << fixed << setprecision(2) << time << " seconds" << endl;
         pressEnter();
+    }
+
+    void sec_30()
+    {
+        takeTest(30, 4);
     }
 
     void sec_60()
     {
+        takeTest(60, 5);
     }
 
     void sec_90()
     {
+        takeTest(90, 6);
     }
 
     friend void pressEnter();
 };
 
-
-
+void typingMaster() {
+        cout << "************************************************************************************************" << endl;
+        cout << "  _______                   _                     __  __                 _                 " << endl;
+        cout << " |__   __|                 (_)                   |  \\/  |               | |                " << endl;
+        cout << "    | |     _   _   _ __    _   _ __     __ _    | \\  / |   __ _   ___  | |_    ___   _ __ " << endl;
+        cout << "    | |    | | | | | '_ \\  | | | '_ \\   / _` |   | |\\/| |  / _` | / __| | __|  / _ \\ | '__|" << endl;
+        cout << "    | |    | |_| | | |_) | | | | | | | | (_| |   | |  | | | (_| | \\__ \\ | |_  |  __/ | |   " << endl;
+        cout << "    |_|     \\__, | | .__/  |_| |_| |_|  \\__, |   |_|  |_|  \\__,_| |___/  \\__|  \\___| |_|   " << endl;
+        cout << "             __/ | | |                   __/ |                                             " << endl;
+        cout << "            |___/  |_|                  |___/                                              " << endl;
+        cout << "************************************************************************************************" << endl;
+}

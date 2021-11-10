@@ -117,25 +117,35 @@ class Users {
                     cout<<"***************************************"<<endl;
                     cout<<'\t'<<player<<"'s Scoreboard :"<<endl;
                     cout<<"***************************************"<<endl;
-                    cout<<"Classic Mode :"<<endl;
-                    cout<<"Easy   :"<<scores[0]<<endl;
-                    cout<<"Medium : "<<scores[1]<<endl;
-                    cout<<"Hard   : "<<scores[2]<<endl<<endl;
-                    cout<<"Time Attack Mode : "<<endl;
-                    cout<<"30 seconds : "<<scores[3]<<endl;
-                    cout<<"60 seconds : "<<scores[4]<<endl;
-                    cout<<"90 seconds : "<<scores[5]<<endl;
-                    cout<<"\nAverage Accuracy : "<<scores[6]<<endl;
-                    cout<<"Words per Minute (wpm) : "<<scores[7]<<endl;
-                    cout<<"Tests taken : "<<scores[8]<<endl;
+                    cout<<"\t      Classic Mode"<<endl;
+                    cout<<setw(16)<<"Easy"<<setw(4)<<"|"<<setw(8)<<scores[0]<<endl;
+                    cout<<setw(16)<<"Medium"<<setw(4)<<"|"<<setw(8)<<scores[1]<<endl;
+                    cout<<setw(16)<<"Hard"<<setw(4)<<"|"<<setw(8)<<scores[2]<<endl<<endl;
+    
+                    cout<<"\t   Time Attack Mode"<<endl;
+                    cout<<setw(16)<<"30 seconds"<<setw(4)<<"|"<<setw(8)<<scores[3]<<endl;
+                    cout<<setw(16)<<"60 seconds"<<setw(4)<<"|"<<setw(8)<<scores[4]<<endl;
+                    cout<<setw(16)<<"90 seconds"<<setw(4)<<"|"<<setw(8)<<scores[5]<<endl<<endl;
+
+
+                    cout<<"\t\t Stats"<<endl;
+
+                    cout<<setw(16)<<"Accuracy"<<setw(4)<<"|"<<setw(8)<<scores[6]<<endl;
+                    cout<<setw(16)<<"Words per Minute"<<setw(4)<<"|"<<setw(8)<<scores[7]<<endl;
+                    cout<<setw(16)<<"Tests Taken"<<setw(4)<<"|"<<setw(8)<<scores[8]<<endl;
+
                     cout<<"***************************************"<<endl; 
             }
             pressEnter();
         
         }
 
-        void addUserStarting(string player){
-            if(getUserData(player)) {}
+        string addUserStarting(){
+            string player;
+            label:
+            cout << "\nEnter your name: ";
+            cin >> player;
+            if(getUserData(player)) { return player; }
             else{
                 char c;
                 cout << "This user doesn't exist. Do you want to create a new one (y/n)";
@@ -149,9 +159,15 @@ class Users {
                     }
                     cout<<player<<" has been registered succesfully";
                     out.close();
+                    return player;
+                }
+                else 
+                {
+                    goto label;
                 }
             }
             pressEnter();
+            return "";
         }
 
         void addUser(string player){
