@@ -75,12 +75,15 @@ class Users {
             if(users.size() == 0)
                 cout<<"\nNo users registered yet\n";
             else{
-                cout<<endl;
+                cout<<"***************************************"<<endl;
+                cout<<'\t'<<"Users List :"<<endl;
+                cout<<"***************************************"<<endl;
                 int i=1;
                 for (auto user : users) {
                     cout << i <<". "<<user <<endl;
                     i++;
                 }
+                cout<<endl<<"***************************************"<<endl;
             }
             pressEnter();
         }
