@@ -36,8 +36,20 @@
 ### Functionalities:
 
 **1. Classic Mode :**
+```
+Classic Mode
+|--- Easy
+|--- Medium
+|--- Hard
+```
 
 **2. Time Attack Mode :**
+```
+Time Attack Mode
+|--- 30 seconds
+|--- 60 seconds
+|--- 90 seconds
+```
 
 **3. User Reports :**
 ```
