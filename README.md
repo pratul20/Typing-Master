@@ -1,10 +1,16 @@
 # OOPL Project : Typing Master
 
 ## Introduction :
->Add introduction here
+>The project is all about touch typing and tracking performance. The user can select from different modes like classic and time attack and can choose the difficulty level easy, medium, hard accordingly in both modes and can track the performance immediately after finishing the test from terminal or as well from their personalized scoreboard, which can be accessed from the menu which shows all the stats like accuracy, words per minute(WPM), no. of times test taken and more.
+<br>
+The program can recognize new users and previous users, using their names and show options accordingly.
+<br>
+The project makes use of the following different features in OOPS:
+* Inheritance
+* Abstraction
+* Encapsulation
+* Friend functions
 
-## Description :
->Add description here
 ## Classes defined :
 
 1. Users
@@ -481,7 +487,8 @@ As you can see, a new `test101.txt` file has been created in `Database/HighScore
 <br/>
 <a href="https://ibb.co/PwccQSS"><img src="https://i.ibb.co/yW66S33/test101-User-created.png" alt="test101-User-created" border="0"></a>
 ## Conclusions:
-> Add conclusion here
+> The above Typing-Master program is
+of great use for those who want to improve their typing speed.
 
 
 
