@@ -32,7 +32,7 @@
 * ***addUserStarting()***: This function prompts an upcoming user to register before the game starts
 * ***updateUserInfo()***: This function updates the user informations like average accuracy, wpm and no. of tests taken.
 * ***updateScores()***: This function updates the scores in all the levels of Classic and TimeAttack game mode.
-* ***pressEnter***: This function just prompts the user to press the Enter key wherever required. It has been implemented as a *friend function*.
+* ***pressEnter()***: This function just prompts the user to press the Enter key wherever required. It has been implemented as a *friend function*.
 
 ### 2. Menu class :
 
@@ -172,6 +172,85 @@ Classic Mode
 |--- Medium
 |--- Hard
 ```
+* ***Classic Mode Menu*** : It allows user to select the mode or navigate back to the Main Menu
+>***Output :***
+<!-- <a href="https://ibb.co/SwWhF1b"><img src="https://i.ibb.co/gZH5kXN/Classic-Mode-Menu.png" alt="Classic-Mode-Menu" border="0"></a> -->
+```
+
+************************************************************************************************
+  _______                   _                     __  __                 _
+ |__   __|                 (_)                   |  \/  |               | |
+    | |     _   _   _ __    _   _ __     __ _    | \  / |   __ _   ___  | |_    ___   _ __      
+    | |    | | | | | '_ \  | | | '_ \   / _` |   | |\/| |  / _` | / __| | __|  / _ \ | '__|     
+    | |    | |_| | | |_) | | | | | | | | (_| |   | |  | | | (_| | \__ \ | |_  |  __/ | |        
+    |_|     \__, | | .__/  |_| |_| |_|  \__, |   |_|  |_|  \__,_| |___/  \__|  \___| |_|        
+             __/ | | |                   __/ |
+            |___/  |_|                  |___/
+************************************************************************************************
+
+                                  Welcome to Typing Master
+
+Welcome pratul!
+
+Select the Mode:-
+
+1. Classic Mode
+2. Time Attack Mode
+3. User Reports
+4. Exit
+Enter Your Choice: 1
+
+Select the level:-  
+1. Easy
+2. Medium
+3. Hard
+4. Back To Main Menu
+Enter your choice: 1
+```
+
+* ***30 Seconds Mode*** : 30 seconds test in Time Attack Mode
+>***Output :***
+<!-- <a href="https://ibb.co/7pdbB7L"><img src="https://i.ibb.co/94kGBRS/Easy-Mode.png" alt="Easy-Mode" border="0"></a> -->
+```
+************************************************************************************************
+  _______                   _                     __  __                 _
+ |__   __|                 (_)                   |  \/  |               | |
+    | |     _   _   _ __    _   _ __     __ _    | \  / |   __ _   ___  | |_    ___   _ __
+    | |    | | | | | '_ \  | | | '_ \   / _` |   | |\/| |  / _` | / __| | __|  / _ \ | '__|
+    | |    | |_| | | |_) | | | | | | | | (_| |   | |  | | | (_| | \__ \ | |_  |  __/ | |
+    |_|     \__, | | .__/  |_| |_| |_|  \__, |   |_|  |_|  \__,_| |___/  \__|  \___| |_|
+             __/ | | |                   __/ |
+            |___/  |_|                  |___/
+************************************************************************************************
+
+                                  Classic Mode (easy)
+
+To stop, press ^
+Starting in 3... 2... 1...
+
+You can decide what you want to do in life, but I suggest doing something that creates
+
+You can decide what you want to do in life, but I suggest doing something that creates (2 lines Remaining)
+
+Something that leaves a tangible thing once you're done
+
+Something that leaves a tangible thing once you're done (1 lines Remaining)
+
+That way even after you're gone, you will still live on in the things you created
+
+That way even after you're gone, you will still live on in the things you created (0 lines Remaining)
+
+
+           Results
+******************************
+    Errors   |     5
+     Fixed   |     5
+     Speed   |    55
+  Accuracy   | 98.06 %
+Time Taken   | 42.94 seconds
+
+Press Enter to continue.
+```
 
 **2. Time Attack Mode :**
 ```
@@ -180,6 +259,83 @@ Time Attack Mode
 |--- 60 seconds
 |--- 90 seconds
 ```
+
+* ***Time Attack Mode Menu*** : It allows user to select the mode or navigate back to the Main Menu
+>***Output :***
+<!-- <a href="https://ibb.co/s5D2Bvs"><img src="https://i.ibb.co/yhMX3ng/Time-Attack-Menu.png" alt="Time-Attack-Menu" border="0"></a> -->
+```
+************************************************************************************************
+  _______                   _                     __  __                 _
+ |__   __|                 (_)                   |  \/  |               | |
+    | |     _   _   _ __    _   _ __     __ _    | \  / |   __ _   ___  | |_    ___   _ __      
+    | |    | | | | | '_ \  | | | '_ \   / _` |   | |\/| |  / _` | / __| | __|  / _ \ | '__|     
+    | |    | |_| | | |_) | | | | | | | | (_| |   | |  | | | (_| | \__ \ | |_  |  __/ | |        
+    |_|     \__, | | .__/  |_| |_| |_|  \__, |   |_|  |_|  \__,_| |___/  \__|  \___| |_|        
+             __/ | | |                   __/ |
+            |___/  |_|                  |___/
+************************************************************************************************
+
+                                  Welcome to Typing Master
+
+Welcome pratul!
+
+Select the Mode:-
+
+1. Classic Mode
+2. Time Attack Mode
+3. User Reports
+4. Exit
+Enter Your Choice: 2
+
+Select the Time:-   
+1. 30 seconds       
+2. 60 seconds       
+3. 90 seconds       
+4. Back To Main Menu
+Enter your choice: 1
+```
+
+* ***30 Seconds Mode*** : 30 seconds test in Time Attack Mode
+>***Output :***
+<!-- <a href="https://ibb.co/0cJ6dTn"><img src="https://i.ibb.co/KXyf3d5/30-Seconds-Mode.png" alt="30-Seconds-Mode" border="0"></a> -->
+```
+************************************************************************************************
+  _______                   _                     __  __                 _
+ |__   __|                 (_)                   |  \/  |               | |
+    | |     _   _   _ __    _   _ __     __ _    | \  / |   __ _   ___  | |_    ___   _ __
+    | |    | | | | | '_ \  | | | '_ \   / _` |   | |\/| |  / _` | / __| | __|  / _ \ | '__|
+    | |    | |_| | | |_) | | | | | | | | (_| |   | |  | | | (_| | \__ \ | |_  |  __/ | |
+    |_|     \__, | | .__/  |_| |_| |_|  \__, |   |_|  |_|  \__,_| |___/  \__|  \___| |_|
+             __/ | | |                   __/ |
+            |___/  |_|                  |___/
+************************************************************************************************
+
+                                  Time Attack Mode (30 seconds)
+
+To stop, press ^
+Starting in 3... 2... 1... 
+
+Out of another, I get a lovely view of the bay and a little private wharf belonging to the estate
+
+Out of another, I get a lovely view of the bay and a little private wharf belonging to the estate (9.49034 seconds remaining)
+
+There is a beautiful shaded lane that runs down there from the house
+
+There is a beautiful shaded lane that runs down there
+
+***************Time Finished***************
+
+           Results
+******************************
+    Errors   |     5
+     Fixed   |     5
+     Speed   |    56
+  Accuracy   | 96.99 %
+Time Taken   | 30.03 seconds
+
+Press Enter to continue.    
+```
+
 
 **3. User Reports :**
 ```
