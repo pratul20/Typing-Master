@@ -206,7 +206,7 @@ Select the level:-
 Enter your choice: 1
 ```
 
-* ***30 Seconds Mode*** : 30 seconds test in Time Attack Mode
+* ***Easy Mode*** : 30 seconds test in Time Attack Mode
 >***Output :***
 <!-- <a href="https://ibb.co/7pdbB7L"><img src="https://i.ibb.co/94kGBRS/Easy-Mode.png" alt="Easy-Mode" border="0"></a> -->
 ```
