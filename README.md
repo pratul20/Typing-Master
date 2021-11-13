@@ -11,8 +11,10 @@
 2. Menu
 3. Time
 4. UserInput
->2. Add rest of the classes here
-
+5. Paragraph
+6. Report
+7. ClassicMode
+8. TimeAttackMode
 
 ### 1. Users class :
 
