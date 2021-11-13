@@ -9,6 +9,8 @@
 
 1. Users
 2. Menu
+3. Time
+4. UserInput
 >2. Add rest of the classes here
 
 
@@ -87,6 +89,75 @@
 * ***getFixedErrors()***: This function returns the count of the errors that were fixed.
 * ***getWordCount()***: This function returns the number of words typed.
 * ***~UserInput()***: It is the destructor and is used to free the memory once the object is no longer needed.
+
+### 5. Paragraph class :
+
+**Class variables :**
+* ***difficulty***: Variable to store the difficulty selected by the user.
+* ***toType***: Variable that stores the entire string to be typed.
+
+**Class functions :**
+* ***Paragraph()***: It is the constructor and is used to initialize the class variables and set the difficulty based on passed parameters.
+* ***getParagraph()***: This function is responsible for splitting the paragraph into different lines.
+
+### 6. Report class :
+
+**Class variables :**
+* ***words***: Variable to save words typed.
+* ***errors***: Variable to save errors count.
+* ***total***: Variable to save total count.
+* ***fixedErr***: Variable to save count of fixed errors.
+* ***avgAccuracy***: Variable to save average accuracy of the user.
+* ***time***: Variable to save the time taken by the user.
+
+**Class functions :**
+* ***Report()***: It is the constructor and is used to initialize the class variables.
+* ***getWords()***: It is used to get count of words.
+* ***getErrors()***: This function saves the count of errors.
+* ***getTotal()***: This function saves the count of total.
+* ***getFixedErr()***: This function returns the count of fixed errors.
+* ***getAvgAccuracy()***: This function returns the average accuracy.
+* ***getTime()***: This function returns the time elapsed.
+* ***setWords()***: This function sets the count of words.
+* ***setErrors()***: This function sets the count of errors.
+* ***setTotal()***: This function sets the count of total.
+* ***setFixedErr()***: This function sets the count of fixed errors.
+* ***setAvgAccuracy()***: This function sets the average accuracy.
+* ***setTime()***: This function sets the time.
+* ***updateDetails()***: This function updates the scores of the user to be saved.
+* ***printDetails()***: This function prints the details of the user to the screen.
+
+### 7. ClassicMode class (inherits from Time class in public mode)
+
+**Class variables :**
+* ***level***: variable to store the difficulty level.
+* ***playerName***: variable to store the name of the player.
+* ***userObj***: object of the Users class to store details of the user.
+
+**Class functions :**
+* ***ClassicMode()***: It is the constructor and is used to initialize the class variables.
+* ***menu()***: This function shows the menu options for classic mode.
+* ***takeTest()***: This function starts the typing test.
+* ***easy()***: This function starts the easy mode.
+* ***medium()***: This function starts the medium mode.
+* ***hard()***: This function starts the hard mode.
+* ***pressEnter()***: Friend function.
+
+### 8. TimeAttackMode class (inherits from Time class in public mode)
+
+**Class variables :**
+* ***level***: variable to store the difficulty level.
+* ***playerName***: variable to store the name of the player.
+* ***userObj***: object of the Users class to store details of the user.
+
+**Class functions :**
+* ***TimeAttackMode()***: It is the constructor and is used to initialize the class variables.
+* ***menu()***: This function shows the menu options for time attack mode.
+* ***takeTest()***: This function starts the typing test.
+* ***sec_30()***: This function starts the 30 second mode.
+* ***sec_60()***: This function starts the 60 second mode.
+* ***sec_90()***: This function starts the 90 second mode.
+* ***pressEnter()***: Friend function.
 
 ## Results :
 
