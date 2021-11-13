@@ -2,13 +2,14 @@
 #include <filesystem>
 #include <fstream>
 #include <string>
-#include<conio.h>
+#include <conio.h>
+#include <cstdlib>
 
 using namespace std;
 using std::filesystem::directory_iterator;
 
 void pressEnter();
-
+void typingMaster();
 class Users {
 
     private :
@@ -167,6 +168,8 @@ class Users {
                 }
                 else 
                 {
+                    system("cls");
+                    typingMaster();
                     goto label;
                 }
             }
@@ -267,4 +270,17 @@ class Users {
 void pressEnter() {
     cout<<"\nPress Enter to continue.";
     while(getch()!=13);
+}
+
+void typingMaster() {
+        cout << "************************************************************************************************" << endl;
+        cout << "  _______                   _                     __  __                 _                 " << endl;
+        cout << " |__   __|                 (_)                   |  \\/  |               | |                " << endl;
+        cout << "    | |     _   _   _ __    _   _ __     __ _    | \\  / |   __ _   ___  | |_    ___   _ __ " << endl;
+        cout << "    | |    | | | | | '_ \\  | | | '_ \\   / _` |   | |\\/| |  / _` | / __| | __|  / _ \\ | '__|" << endl;
+        cout << "    | |    | |_| | | |_) | | | | | | | | (_| |   | |  | | | (_| | \\__ \\ | |_  |  __/ | |   " << endl;
+        cout << "    |_|     \\__, | | .__/  |_| |_| |_|  \\__, |   |_|  |_|  \\__,_| |___/  \\__|  \\___| |_|   " << endl;
+        cout << "             __/ | | |                   __/ |                                             " << endl;
+        cout << "            |___/  |_|                  |___/                                              " << endl;
+        cout << "************************************************************************************************" << endl;
 }
