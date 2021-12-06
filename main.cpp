@@ -10,6 +10,7 @@ using namespace std::chrono;
 int main()
 {
     Menu obj;
+    system("cls");
     obj.logo();
     obj.start();
     while(1) {
