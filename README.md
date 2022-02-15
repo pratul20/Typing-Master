@@ -3,6 +3,8 @@
 ## Introduction :
 >The project is all about touch typing and tracking performance. The user can select from different modes like classic and time attack and can choose the difficulty level easy, medium, hard accordingly in both modes and can track the performance immediately after finishing the test from terminal or as well from their personalized scoreboard, which can be accessed from the menu which shows all the stats like accuracy, words per minute(WPM), no. of times test taken and more.<br><br>The program can recognize new users and previous users, using their names and show options accordingly.<br><br>The project makes use of the following different features in OOPS:<br><br>1. Inheritance<br>2. Abstraction<br>3. Encapsulation<br>4. Friend functions
 
+>To run the program, put all the files in one folder and run the main.cpp file
+
 ## Classes defined :
 
 1. Users
